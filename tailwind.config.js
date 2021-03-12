@@ -9,6 +9,12 @@ module.exports = {
       defaultExtractor: (content) =>
         [...content.matchAll(/(?:class:)*([\w\d-/:%.]+)/gm)].map(([_match, group, ..._rest]) => group),
     },
+
+    extend: {
+      backgroundImage: theme => ({
+         'hero': "url('/public/bg1.jpg')",
+      })
+    }
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
