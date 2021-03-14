@@ -27,14 +27,26 @@
 	background-repeat: no-repat;
 	background-size: cover;
 	background-blend-mode: multiply;">
-	<div class="container flex flex-col justify-center items-center w-screen h-screen mx-auto">
+	
 		{#await $promiseStore}
-			Loading..
+			Loading...
 		{:then _}
 			{#if $userStore}
-					<h1 class = "font-large text-4xl text-white font-anton">Welcome, {$userStore.username}!</h1> 
+
+			<div class="flex-center position-ref full-height">
+				<div class="top-right mr-auto">
+					<span class = "font-large text-white font-anton">Welcome, {$userStore.username}!</span> 
+					<button on:click={signout} class="text-white bg-purple-700 border-0 py-1 px-2 items-center focus:outline-none hover:bg-purple-500 rounded">Logout</button>
+				</div>
+				<div class="content">
 					<h3>You have successfully registered</h3>
-					<button on:click={signout}>Logout</button>
+				</div>
+			</div>
+	
+
+
+					
+					
 			{:else}
 				<Router routes = {{
 					'/': SignIn,
@@ -45,5 +57,5 @@
 			{:catch error}
 				<strong>Error!{error}</strong>
 		{/await}
-	</div>
+	
 </div>
